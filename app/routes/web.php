@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/test/{id?}', function ($id = 0) {
+    return view('test', ['name' => 'Ticius', 'id' => $id ]);
+})->name('testId');
