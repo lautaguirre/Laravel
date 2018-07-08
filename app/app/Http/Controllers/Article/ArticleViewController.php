@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Article;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Article;
 
-class TestController extends Controller
+class ArticleViewController extends Controller
 {
     public function view($id)
     {
@@ -14,6 +15,7 @@ class TestController extends Controller
         $article->user;
         $article->tags;
 
-        echo($article);
+        return view('article/articleView', ['article' => $article]);
     }
 }
+

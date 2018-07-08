@@ -1,0 +1,65 @@
+html,
+body {
+  background-color: #fff;
+  color: #636b6f;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+  height: 100vh;
+  margin: 0;
+}
+
+html .articleContainer,
+body .articleContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+html .articleContainer .links > a,
+body .articleContainer .links > a {
+  color: #636b6f;
+  padding: 0 25px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+html .articleContainer .m-b-md,
+body .articleContainer .m-b-md {
+  margin-bottom: 30px;
+}
+
+html .articleContainer .top-right,
+body .articleContainer .top-right {
+  position: absolute;
+  right: 10px;
+  top: 18px;
+}
+
+html .articleContainer .content,
+body .articleContainer .content {
+  text-align: center;
+}
+
+html .articleContainer .content .title,
+body .articleContainer .content .title {
+  font-size: 84px;
+}
+
+html .articleContainer .content .user,
+body .articleContainer .content .user {
+  font-weight: 600;
+}
+
+html .articleContainer .content .articleContent,
+body .articleContainer .content .articleContent {
+  font-weight: 600;
+}
+
