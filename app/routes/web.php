@@ -16,7 +16,8 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'articles'], function(){
-    Route::get('view/{article?}', function($article = 'Vacio'){
-        echo $article;
-    });
+    Route::get('view/{id}', [
+            'uses' => 'TestController@view',
+            'as' => 'articlesViews'
+        ]);
 });
