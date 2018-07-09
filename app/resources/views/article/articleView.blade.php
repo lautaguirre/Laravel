@@ -27,6 +27,10 @@
             @endif
 
             <div class="content">
+                <div class="category">
+                    {{ $article->category->name }}
+                </div>
+
                 <div class="title m-b-md">
                     {{ $article->title }}
                 </div>

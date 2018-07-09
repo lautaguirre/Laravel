@@ -21,3 +21,14 @@ Route::group(['prefix' => 'articles'], function(){
             'as' => 'articlesViews'
         ]);
 });
+
+Route::group(['prefix' => 'admin'], function(){
+    Route::get('/', [
+            'uses' => 'Admin\AdminMainController@main',
+            'as' => 'adminMain'
+        ]);
+});
+
+Route::get('react', function() {
+    return view('react');
+});
