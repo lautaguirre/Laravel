@@ -36364,7 +36364,7 @@ var Example = function (_Component) {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',
                                 { className: 'card-header' },
-                                'Example Component'
+                                'Example React Component'
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 'div',

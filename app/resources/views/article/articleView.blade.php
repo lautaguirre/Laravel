@@ -9,9 +9,11 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/article/view.css') }}">
     </head>
-    <body>
+    <body class="container">
         <div class="articleContainer">
             @if (Route::has('login'))
                 <div class="top-right links">
