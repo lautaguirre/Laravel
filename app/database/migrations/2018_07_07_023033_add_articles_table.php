@@ -26,6 +26,8 @@ class AddArticlesTable extends Migration
             $table->unsignedInteger('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
+            $table->string('slug');
+
             $table->timestamps();
         });
     }

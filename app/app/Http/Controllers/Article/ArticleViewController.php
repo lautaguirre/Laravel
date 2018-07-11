@@ -8,9 +8,10 @@ use App\Article;
 
 class ArticleViewController extends Controller
 {
-    public function view($id)
+    public function view($slug)
     {
-        $article = Article::find($id);
+        $article = Article::where('slug', $slug)->first();
+
         $article->category;
         $article->user;
         $article->tags;
