@@ -27,6 +27,8 @@ Route::group(['prefix' => 'admin'], function(){
             'uses' => 'Admin\AdminMainController@main',
             'as' => 'adminMain'
         ]);
+
+    Route::resource('users', 'UsersController');
 });
 
 Route::get('react', function() {
