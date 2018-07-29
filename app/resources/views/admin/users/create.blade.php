@@ -4,6 +4,14 @@
 
 @section('content')
 
+    @if(count($errors) > 0)
+        @foreach($errors->all() as $error)
+        <div class="alert alert-danger">
+            {{ $error }}
+        </div>
+        @endforeach
+    @endif
+
     {!! Form::open(['route' => 'users.store', 'method' => 'POST']) !!}
 
     <div class="form-group">

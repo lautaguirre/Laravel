@@ -27,7 +27,7 @@
                         @endif
                     </td>
                     <td>
-                        <a href="" class="btn btn-warning"></a>
+                        <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning"></a>
                         <a href="{{ route('admin.users.destroy', $user->id) }}" onclick="return confirm('Seguro?');" class="btn btn-danger"></a>
                     </td> 
                 </tr>
