@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
+use App\Category;
 
-class UsersController extends Controller
+class CategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('id', 'ASC')->paginate(5);
-        return view('admin.users.index', ['users' => $users]);
+        return view('admin.categories.index');
     }
 
     /**
@@ -25,7 +24,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.categories.create');
     }
 
     /**
@@ -36,20 +35,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name' => 'required|max:120|min:4',
-            'email' => 'min:4|max:250|required|unique:users',
-            'password' => 'min:4|max:120|required'
+        $this->validate($request, [
+            'name' => 'required|max:120|unique:categories'
         ]);
 
-        $user = new User($request->all());
+        $category = new Category($request->all());
+        $category->save();
 
-        $user->password = bcrypt($request->password);
-        $user->save();
+        flash('La categoria ' . $category->name . ' fue creada exitosamente')->success();
 
-        flash('Se ha registrado el usuario ' . $user->name . ' de forma exitosa.')->success();
-
-        return redirect()->route('users.index');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -71,9 +66,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-
-        return view('admin.users.edit')->with('user', $user);
+        //
     }
 
     /**
@@ -85,14 +78,7 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-
-        $user->fill($request->all());
-        $user->save();
-
-        flash('El usuario ' . $user->name . ' ha sido modificado exitosamente');
-
-        return redirect()->route('users.index');
+        //
     }
 
     /**
@@ -103,11 +89,6 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-
-        flash('El usuario ' . $user->name . ' ha sido eliminado de forma exitosa')->error();
-
-        return redirect()->route('users.index');
+        //
     }
 }

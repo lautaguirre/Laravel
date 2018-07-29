@@ -16,6 +16,8 @@
 
     @include('flash::message')
 
+    @include('admin.template.partials/errors')
+
     <div class="container">
         @yield('content')
     </div>
