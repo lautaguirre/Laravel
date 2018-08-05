@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome', ['name' => 'Lautaro']);
-});
+Route::view('/', 'welcome', ['name' => 'Lautaro'])->name('welcome');
 
 Route::group(['prefix' => 'articles'], function(){
     Route::get('view/{slug}', [
@@ -22,7 +20,7 @@ Route::group(['prefix' => 'articles'], function(){
         ]);
 });
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/', [
             'uses' => 'Admin\AdminMainController@main',
             'as' => 'adminMain'
@@ -45,3 +43,6 @@ Route::group(['prefix' => 'admin'], function(){
 Route::get('react', function() {
     return view('react');
 });
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
