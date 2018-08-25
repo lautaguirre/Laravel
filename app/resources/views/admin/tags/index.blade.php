@@ -6,6 +6,18 @@
 
   <a href="{{ route('tags.create') }}" class="btn btn-info">Registrar nuevo tag</a>
   <hr>
+
+  {!! Form::open(['route' => 'tags.index', 'method' => 'GET', 'class' => 'navbar-form pull-right']) !!}
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="search"><span class="fa fa-search"></span></span>
+      </div>
+      {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Buscar...', 'aria-describedby' => 'search']) !!}
+    </div>
+
+  {!! Form::close() !!}
+
   <table class="table table-striped">
     <thead>
       <th>ID</th>
