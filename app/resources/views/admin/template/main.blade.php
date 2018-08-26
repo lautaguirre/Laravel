@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/admin/main.css') }}">
     <link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/trumbowyg/ui/trumbowyg.css') }}">
 </head>
 <body>
     @include('admin/template/partials/nav')
@@ -30,6 +31,7 @@
         crossorigin="anonymous">
     </script>
     <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
+    <script src="{{ asset('plugins/trumbowyg/trumbowyg.js') }}"></script>
 
     @yield('js')
 </body>

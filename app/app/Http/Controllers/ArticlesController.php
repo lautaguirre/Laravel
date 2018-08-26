@@ -7,6 +7,7 @@ use App\Category;
 use App\Tag;
 use App\Article;
 use App\Image;
+use App\Http\Requests\ArticleRequest;
 
 class ArticlesController extends Controller
 {
@@ -41,7 +42,7 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
         if ($request->file('image')) {
             $file = $request->file('image');
