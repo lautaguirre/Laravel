@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Tag;
+use App\Article;
+use App\Image;
 
 class ArticlesController extends Controller
 {
@@ -15,7 +17,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.articles.index');
     }
 
     /**
@@ -41,13 +43,30 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file('image');
-        $name = 'imagen_' . time() . '.' . $file->getClientOriginalExtension();
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $name = 'imagen_' . time() . '.' . $file->getClientOriginalExtension();
 
-        $path = public_path() . '/images/articles/';
+            $path = public_path() . '/images/articles/';
 
-        $file->move($path, $name);
+            $file->move($path, $name);
+        }
 
+        $article = new Article($request->all());
+
+        $article->user_id = \Auth::user()->id;
+        $article->save();
+
+        $article->tags()->sync($request->tags);
+
+        $image = new Image();
+        $image->name = $name;
+        $image->article()->associate($article);
+        $image->save();
+
+        flash('El Articulo ' . $article->title . ' ha sido creado')->success();
+
+        return redirect()->route('articles.index');
     }
 
     /**
