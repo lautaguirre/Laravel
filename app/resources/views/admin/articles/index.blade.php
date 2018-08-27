@@ -37,7 +37,7 @@
               <a href="{{ route('articles.edit', $article->id) }}" class="btn btn-warning">
                 <span class="fa fa-wrench"></span>
               </a>
-              <a href="{{ route('articles.destroy', $article->id) }}" onclick="return confirm('Seguro?');" class="btn btn-danger">
+              <a href="{{ route('admin.articles.destroy', $article->id) }}" onclick="return confirm('Seguro?');" class="btn btn-danger">
                 <span class="fa fa-times"></span>
               </a>
             </td>
