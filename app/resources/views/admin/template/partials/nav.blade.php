@@ -27,6 +27,9 @@
               <a class="nav-link" href="{{ route('articles.index') }}">Articulos</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{ route('images.index') }}">Imagenes</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#"> {{ Auth::user()->name }} </a>
             </li>
             <li>
