@@ -11,7 +11,10 @@
 |
 */
 
-Route::view('/', 'welcome', ['name' => 'Lautaro'])->name('welcome');
+Route::get('/', [
+    'uses' => 'FrontController@index',
+    'as' => 'welcome'
+]);
 
 Route::group(['prefix' => 'articles'], function(){
     Route::get('view/{slug}', [
