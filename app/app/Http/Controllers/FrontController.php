@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use Carbon\Carbon;
 
 class FrontController extends Controller
 {
+    public function __construct()
+    {
+        Carbon::setLocale('es');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,7 @@ class FrontController extends Controller
      */
     public function index()
     {
-        $articles = Article::orderBy('id', 'DESC')->paginate(4);
+        $articles = Article::orderBy('id', 'DESC')->paginate(3);
 
         $articles->each(function ($articles){
             $articles->category;

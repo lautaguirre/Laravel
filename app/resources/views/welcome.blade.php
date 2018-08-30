@@ -17,6 +17,7 @@
                           <p class="card-text">{!! $article->content !!}</p>
                           <p class="card-text">{{ $article->category->name }}</p>
                           <a href="" class="btn btn-primary">Go to the article</a>
+                            <i class="fa fa-clock-o"> {{ $article->created_at->diffForHumans() }}</i>
                         </div>
                       </div>
                     </div>
