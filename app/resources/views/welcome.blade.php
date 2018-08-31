@@ -15,9 +15,11 @@
                         <div class="card-body">
                           <h5 class="card-title">{{ $article->title }}</h5>
                           <p class="card-text">{!! $article->content !!}</p>
-                          <p class="card-text">{{ $article->category->name }}</p>
-                          <a href="" class="btn btn-primary">Go to the article</a>
+                          <i class="fa fa-folder-open-o"></i>
+                          <a href="{{ route('index.searchCategory', $article->category->name) }}">{{ $article->category->name }}</a>
+                          <div class="pull-right">
                             <i class="fa fa-clock-o"> {{ $article->created_at->diffForHumans() }}</i>
+                          </div>
                         </div>
                       </div>
                     </div>

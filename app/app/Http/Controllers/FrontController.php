@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use Carbon\Carbon;
+use App\Category;
+use App\Tag;
 
 class FrontController extends Controller
 {
@@ -30,69 +32,29 @@ class FrontController extends Controller
         return view('welcome')->with('articles', $articles);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function searchCategory($name)
     {
-        //
+        $category = Category::SearchCategory($name)->first();
+
+        $articles = $category->articles()->paginate(4);
+        $articles->each(function($articles){
+            $articles->category;
+            $articles->images;
+        });
+
+        return view('welcome')->with('articles', $articles);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function searchTag($name)
     {
-        //
-    }
+        $tag = Tag::Search($name)->first();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $articles = $tag->articles()->paginate(4);
+        $articles->each(function($articles){
+            $articles->category;
+            $articles->images;
+        });
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('welcome')->with('articles', $articles);
     }
 }

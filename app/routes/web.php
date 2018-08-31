@@ -16,6 +16,16 @@ Route::get('/', [
     'as' => 'welcome'
 ]);
 
+Route::get('categories/{name}', [
+    'uses' => 'FrontController@searchCategory',
+    'as' => 'index.searchCategory'
+]);
+
+Route::get('tags/{name}', [
+    'uses' => 'FrontController@searchTag',
+    'as' => 'index.searchTag'
+]);
+
 Route::group(['prefix' => 'articles'], function(){
     Route::get('view/{slug}', [
             'uses' => 'Article\ArticleViewController@view',

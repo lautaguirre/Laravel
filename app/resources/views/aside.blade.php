@@ -7,7 +7,9 @@
       @foreach ($categories as $category)
         <li class="list-group-item">
           <span class="badge badge-secondary">{{ $category->articles->count() }}</span>
-          {{ $category->name }}
+          <a href="{{ route('index.searchCategory', $category->name) }}">
+              {{ $category->name }}
+          </a>
         </li>
       @endforeach
     </ul>
@@ -20,7 +22,11 @@
     </h5>
     <div class="card-body">
       @foreach ($tags as $tag)
-        <span class="badge badge-primary">{{ $tag->name }}</span>
+        <span class="badge badge-ligth">
+          <a href="{{ route('index.searchTag', $tag->name) }}">
+            {{ $tag->name }}
+          </a>
+        </span>
       @endforeach
     </div>
   </div>
