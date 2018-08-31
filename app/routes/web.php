@@ -38,18 +38,19 @@ Route::group(['prefix' => 'articles'], function(){
         ]);
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/', [
             'uses' => 'Admin\AdminMainController@main',
             'as' => 'adminMain'
         ]);
 
-    Route::resource('users', 'UsersController');
-
-    Route::get('users/{id}/destroy', [
-        'uses' => 'UsersController@destroy',
-        'as' => 'admin.users.destroy'
-    ]);
+    Route::group(['middleware' => 'admin'], function () {
+        Route::resource('users', 'UsersController');
+        Route::get('users/{id}/destroy', [
+            'uses' => 'UsersController@destroy',
+            'as' => 'admin.users.destroy'
+        ]);
+    });
 
     Route::resource('categories', 'CategoriesController');
     Route::get('categories/{id}/destroy', [

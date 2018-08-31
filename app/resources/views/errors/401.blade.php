@@ -1,0 +1,1 @@
+<a href="{{ route('welcome') }}"><h2>Raja de aca</h2></a>

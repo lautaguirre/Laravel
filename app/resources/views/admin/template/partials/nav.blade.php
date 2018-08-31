@@ -14,9 +14,11 @@
             <li class="nav-item active">
               <a class="nav-link" href="{{ route('welcome') }}">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
-            </li>
+            @if (Auth::user()->admin())
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
+              </li>
+            @endif
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('categories.index') }}">Categorias</a>
             </li>
