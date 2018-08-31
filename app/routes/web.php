@@ -16,6 +16,11 @@ Route::get('/', [
     'as' => 'welcome'
 ]);
 
+Route::get('articles/{slug}', [
+    'uses' => 'FrontController@viewArticle',
+    'as' => 'index.article'
+]);
+
 Route::get('categories/{name}', [
     'uses' => 'FrontController@searchCategory',
     'as' => 'index.searchCategory'
