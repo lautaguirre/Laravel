@@ -38,7 +38,7 @@ Route::group(['prefix' => 'articles'], function(){
         ]);
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(){
     Route::get('/', [
             'uses' => 'Admin\AdminMainController@main',
             'as' => 'adminMain'
