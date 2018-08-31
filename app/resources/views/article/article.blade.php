@@ -4,6 +4,9 @@
 
 @section('content')
   <h3 class="title-front left">{{ $article->title }}</h3>
+  @foreach ($article->tags as $tag)
+      {{ $tag->name }}
+  @endforeach
   <hr>
   <div class="row">
     <div class="col-md-9">
